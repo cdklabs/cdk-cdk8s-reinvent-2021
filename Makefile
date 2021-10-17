@@ -8,15 +8,6 @@ jar:
 	mvn package
 	cp target/cdk-cdk8s-reinvent-2021-0.1.jar image/
 
-cfn:
-	cdk synth
-
-deploy: jar manifest
-	cdk deploy
-
-destroy:
-	cdk destroy
-
 manifest:
 	cdk8s synth
 
