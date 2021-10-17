@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springboot-deployment-c8daefbd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      cdk8s.deployment: SpringBoot-Deployment-c851fc45
+  template:
+    metadata:
+      labels:
+        cdk8s.deployment: SpringBoot-Deployment-c851fc45
+    spec:
+      containers:
+        - env: []
+          image: 185706627232.dkr.ecr.us-east-1.${Token[AWS.URLSuffix.7]}/aws-cdk/assets:3e5f87ce468a115d1434a09453034613127d40434f7f4005935e520bff83cc74
+          imagePullPolicy: Always
+          name: main
+          ports:
+            - containerPort: 8080
+          volumeMounts: []
+      volumes: []
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: springboot-deployment-service-c89ade7d
+spec:
+  externalIPs: []
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    cdk8s.deployment: SpringBoot-Deployment-c851fc45
+  type: NodePort
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    kubernetes.io/ingress.class: alb
+  name: springboot-deployment-service-ingress-c82d9143
+spec:
+  rules:
+    - http:
+        paths:
+          - backend:
+              serviceName: springboot-deployment-service-c89ade7d
+              servicePort: 8080
+            path: /greeting
