@@ -28,6 +28,3 @@ container: image
 
 kill:
 	docker rm -vf reinvent
-
-dev-cluster:
-	kind create cluster
