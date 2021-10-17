@@ -9,8 +9,6 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <cdk.version>[1.128.0,2.0.0]</cdk.version>
-        <constructs.version>[3.0.0,4.0.0)</constructs.version>
         <junit.version>5.7.1</junit.version>
     </properties>
 
@@ -48,37 +46,6 @@
     </build>
 
     <dependencies>
-        <!-- AWS Cloud Development Kit -->
-        <dependency>
-            <groupId>software.amazon.awscdk</groupId>
-            <artifactId>core</artifactId>
-            <version>${cdk.version}</version>
-        </dependency>
-
-        <dependency>
-          <groupId>software.amazon.awscdk</groupId>
-          <artifactId>eks</artifactId>
-          <version>${cdk.version}</version>
-        </dependency>
-
-        <dependency>
-          <groupId>software.amazon.awscdk</groupId>
-          <artifactId>ec2</artifactId>
-          <version>${cdk.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>software.amazon.awscdk</groupId>
-            <artifactId>ecr-assets</artifactId>
-            <version>${cdk.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>software.constructs</groupId>
-            <artifactId>constructs</artifactId>
-            <version>${constructs.version}</version>
-        </dependency>
-
         <dependency>
           <groupId>org.junit.jupiter</groupId>
           <artifactId>junit-jupiter-api</artifactId>
@@ -96,20 +63,6 @@
             <artifactId>assertj-core</artifactId>
             <version>3.18.1</version>
             <scope>test</scope>
-        </dependency>
-
-        <!-- CDK8s -->
-
-        <dependency>
-          <groupId>org.cdk8s</groupId>
-          <artifactId>cdk8s-plus-21</artifactId>
-          <version>1.0.0-beta.16</version>
-        </dependency>
-
-        <dependency>
-          <groupId>org.cdk8s</groupId>
-          <artifactId>cdk8s</artifactId>
-          <version>1.1.4</version>
         </dependency>
 
         <!-- Spring -->
