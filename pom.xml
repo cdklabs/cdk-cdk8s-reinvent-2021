@@ -73,11 +73,15 @@
             <version>${cdk.version}</version>
         </dependency>
 
+        <!-- Constructs -->
+
         <dependency>
             <groupId>software.constructs</groupId>
             <artifactId>constructs</artifactId>
             <version>${constructs.version}</version>
         </dependency>
+
+        <!-- JUnit -->
 
         <dependency>
           <groupId>org.junit.jupiter</groupId>
