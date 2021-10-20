@@ -8,6 +8,9 @@ jar:
 	mvn package
 	cp target/cdk-cdk8s-reinvent-2021-0.1.jar image/
 
+manifest:
+	cdk8s synth
+
 image: jar
 	docker build -t springboot-example image/
 	aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws

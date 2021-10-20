@@ -7,4 +7,6 @@ target
 .vscode
 *.iml
 
+dist/*
+
 image/*.jar
