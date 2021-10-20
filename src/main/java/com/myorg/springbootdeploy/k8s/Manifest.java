@@ -1,4 +1,4 @@
-package com.myorg.springbootdeploy.manifest;
+package com.myorg.springbootdeploy.k8s;
 
 import com.myorg.springbootapp.GreetController;
 import org.cdk8s.App;
