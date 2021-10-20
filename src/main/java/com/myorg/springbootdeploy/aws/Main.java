@@ -1,4 +1,4 @@
-package com.myorg.springbootdeploy.cfn;
+package com.myorg.springbootdeploy.aws;
 
 import software.amazon.awscdk.core.App;
 
@@ -8,7 +8,7 @@ public class Main {
 
         App app = new App();
 
-        new Template(app, "SpringBoot");
+        new Stack(app, "SpringBoot");
 
         app.synth();
     }

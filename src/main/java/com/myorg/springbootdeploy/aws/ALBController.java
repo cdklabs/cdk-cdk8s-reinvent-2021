@@ -1,4 +1,4 @@
-package com.myorg.springbootdeploy.cfn;
+package com.myorg.springbootdeploy.aws;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.jetbrains.annotations.NotNull;
