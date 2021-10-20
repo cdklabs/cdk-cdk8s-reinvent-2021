@@ -8,7 +8,7 @@ jar:
 	mvn package
 	cp target/cdk-cdk8s-reinvent-2021-0.1.jar image/
 
-cfn:
+stack:
 	cdk synth
 
 deploy: jar manifest
