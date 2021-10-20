@@ -10,21 +10,17 @@ import java.util.Collections;
 
 public class Manifest extends Chart {
 
-  public Manifest(@NotNull Construct scope, @NotNull String id, String imageUri) {
+  public Manifest(@NotNull Construct scope, @NotNull String id) {
     super(scope, id);
 
     Deployment deployment = new Deployment(this, "Deployment", DeploymentProps.builder()
             .containers(Collections.singletonList(ContainerProps.builder()
-                    .image(imageUri)
+                    .image("public.ecr.aws/g5q9k7j5/springboot-example")
                     .port(8080)
                     .build()))
             .build());
 
-    Service service = deployment.exposeViaService(ExposeDeploymentViaServiceOptions.builder()
-                    .serviceType(ServiceType.NODE_PORT)
-            .build());
-
-    service.exposeViaIngress(GreetController.PATH);
+    deployment.exposeViaIngress(GreetController.PATH);
   }
 
 }

@@ -8,7 +8,7 @@ public class Main {
 
         App app = new App();
 
-        new Manifest(app,"SpringBoot", "PLACEHOLDER");
+        new Manifest(app,"SpringBoot");
 
         app.synth();
     }
