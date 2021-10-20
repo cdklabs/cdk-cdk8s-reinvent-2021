@@ -21,10 +21,13 @@ manifest:
 	cdk8s synth
 
 image: jar
-	docker build -t reinvent image/
+	docker build -t springboot-example image/
+	aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws
+	docker tag springboot-example public.ecr.aws/g5q9k7j5/springboot-example
+	docker push public.ecr.aws/g5q9k7j5/springboot-example
 
 container: image
-	docker run --name reinvent -p 8080\:8080 -d reinvent
+	docker run --name springboot-example -p 8080\:8080 -d springboot-example
 
 kill:
-	docker rm -vf reinvent
+	docker rm -vf springboot-example
