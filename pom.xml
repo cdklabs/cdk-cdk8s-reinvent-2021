@@ -9,6 +9,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <cdk.version>[1.128.0,2.0.0]</cdk.version>
         <constructs.version>[3.0.0,4.0.0)</constructs.version>
         <junit.version>5.7.1</junit.version>
     </properties>
@@ -47,6 +48,30 @@
     </build>
 
     <dependencies>
+        <!-- AWS Cloud Development Kit -->
+        <dependency>
+            <groupId>software.amazon.awscdk</groupId>
+            <artifactId>core</artifactId>
+            <version>${cdk.version}</version>
+        </dependency>
+
+        <dependency>
+          <groupId>software.amazon.awscdk</groupId>
+          <artifactId>eks</artifactId>
+          <version>${cdk.version}</version>
+        </dependency>
+
+        <dependency>
+          <groupId>software.amazon.awscdk</groupId>
+          <artifactId>ec2</artifactId>
+          <version>${cdk.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>software.amazon.awscdk</groupId>
+            <artifactId>ecr-assets</artifactId>
+            <version>${cdk.version}</version>
+        </dependency>
 
         <!-- Constructs -->
 

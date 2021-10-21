@@ -7,6 +7,10 @@ target
 .vscode
 *.iml
 
+# CDK asset staging directory
+.cdk.staging
+cdk.out
+
 dist/*
 
 image/*.jar
