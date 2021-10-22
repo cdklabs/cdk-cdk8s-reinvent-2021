@@ -15,7 +15,7 @@ public class Manifest extends Chart {
 
     Deployment deployment = new Deployment(this, "Deployment", DeploymentProps.builder()
             .containers(Collections.singletonList(ContainerProps.builder()
-                    .image("public.ecr.aws/g5q9k7j5/springboot-example")
+                    .image("286171437199.dkr.ecr.us-east-1.amazonaws.com/springboot-example")
                     .port(8080)
                     .build()))
             .build());
