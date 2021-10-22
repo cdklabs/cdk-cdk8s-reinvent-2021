@@ -20,7 +20,9 @@ public class Manifest extends Chart {
                     .build()))
             .build());
 
-    deployment.exposeViaIngress(GreetController.PATH);
+    IngressV1Beta1 ingress = deployment.exposeViaIngress(GreetController.PATH);
+    ingress.getMetadata().addAnnotation("kubernetes.io/ingress.class", "alb");
+    ingress.getMetadata().addAnnotation("alb.ingress.kubernetes.io/scheme", "internet-facing");
   }
 
 }
