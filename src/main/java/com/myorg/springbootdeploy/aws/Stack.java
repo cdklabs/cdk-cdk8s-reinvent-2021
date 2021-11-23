@@ -2,6 +2,8 @@ package com.myorg.springbootdeploy.aws;
 
 import com.myorg.springbootdeploy.k8s.Manifest;
 import org.jetbrains.annotations.NotNull;
+import software.amazon.awscdk.core.CfnOutput;
+import software.amazon.awscdk.core.CfnOutputProps;
 import software.amazon.awscdk.services.ecr.assets.DockerImageAsset;
 import software.amazon.awscdk.services.ecr.assets.DockerImageAssetProps;
 import software.amazon.awscdk.services.eks.*;
@@ -34,7 +36,19 @@ public class Stack extends software.amazon.awscdk.core.Stack {
             image.getRepository().grantPull(cluster.getDefaultNodegroup().getRole());
         }
 
-        cluster.addCdk8sChart("manifest", new Manifest("SpringBoot", image.getImageUri()));
+        Manifest manifest = new Manifest("SpringBoot", image.getImageUri());
+        cluster.addCdk8sChart("manifest", manifest);
+
+        KubernetesObjectValue lbAddress = new KubernetesObjectValue(this, "LBAddress", KubernetesObjectValueProps.builder()
+                .cluster(cluster)
+                .objectType("ingress")
+                .objectName(manifest.getIngress().getName())
+                .jsonPath(".status.loadBalancer.ingress[0].hostname")
+                .build());
+
+        new CfnOutput(this, "LBAddressValue", CfnOutputProps.builder()
+                .value(lbAddress.getValue() + "/greeting")
+                .build());
 
     }
 

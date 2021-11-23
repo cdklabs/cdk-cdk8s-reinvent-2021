@@ -11,6 +11,8 @@ import java.util.Collections;
 
 public class Manifest extends Chart {
 
+  private IngressV1Beta1 ingress;
+
   public Manifest(@NotNull String id, String imageUri) {
     this(new App(), id, imageUri);
   }
@@ -35,6 +37,12 @@ public class Manifest extends Chart {
     IngressV1Beta1 ingress = service.exposeViaIngress(GreetController.PATH);
     ingress.getMetadata().addAnnotation("kubernetes.io/ingress.class", "alb");
     ingress.getMetadata().addAnnotation("alb.ingress.kubernetes.io/scheme", "internet-facing");
+
+    this.ingress = ingress;
+  }
+
+  public IngressV1Beta1 getIngress() {
+    return this.ingress;
   }
 
 }
