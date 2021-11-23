@@ -13,7 +13,7 @@ manifest:
 
 image: jar
 	docker build -t springboot-example image/
-	aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws
+	aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 286171437199.dkr.ecr.us-east-1.amazonaws.com
 	docker tag springboot-example 286171437199.dkr.ecr.us-east-1.amazonaws.com/springboot-example
 	docker push 286171437199.dkr.ecr.us-east-1.amazonaws.com/springboot-example
 
