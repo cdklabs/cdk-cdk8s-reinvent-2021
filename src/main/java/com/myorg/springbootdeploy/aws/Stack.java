@@ -1,6 +1,7 @@
 package com.myorg.springbootdeploy.aws;
 
 import com.myorg.springbootdeploy.k8s.Manifest;
+import org.cdk8s.App;
 import org.jetbrains.annotations.NotNull;
 import software.amazon.awscdk.core.CfnOutput;
 import software.amazon.awscdk.core.CfnOutputProps;
@@ -32,7 +33,7 @@ public class Stack extends software.amazon.awscdk.core.Stack {
             image.getRepository().grantPull(cluster.getDefaultNodegroup().getRole());
         }
 
-        Manifest manifest = new Manifest("SpringBoot", image.getImageUri());
+        Manifest manifest = new Manifest(new App(), "SpringBoot", image.getImageUri());
         cluster.addCdk8sChart("manifest", manifest, KubernetesManifestOptions.builder()
                 .ingressAlb(true)
                 .ingressAlbScheme(AlbScheme.INTERNET_FACING)
