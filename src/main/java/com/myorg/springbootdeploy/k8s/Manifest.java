@@ -11,7 +11,7 @@ import java.util.Collections;
 
 public class Manifest extends Chart {
 
-  private IngressV1Beta1 ingress;
+  private final IngressV1Beta1 ingress;
 
   public Manifest(@NotNull String id, String imageUri) {
     this(new App(), id, imageUri);
@@ -31,14 +31,7 @@ public class Manifest extends Chart {
                     .serviceType(ServiceType.NODE_PORT)
             .build());
 
-    // the ingress path must match the controller path
-    // because url rewrites are not supported in ALB
-    // see https://github.com/kubernetes-sigs/aws-load-balancer-controller/issues/835
-    IngressV1Beta1 ingress = service.exposeViaIngress(GreetController.PATH);
-    ingress.getMetadata().addAnnotation("kubernetes.io/ingress.class", "alb");
-    ingress.getMetadata().addAnnotation("alb.ingress.kubernetes.io/scheme", "internet-facing");
-
-    this.ingress = ingress;
+    this.ingress = service.exposeViaIngress(GreetController.PATH);
   }
 
   public IngressV1Beta1 getIngress() {
