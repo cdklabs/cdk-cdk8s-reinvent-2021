@@ -1,3 +1,5 @@
+.PHONY: install run jar manifest image container kill
+
 install:
 	mvn clean install
 
