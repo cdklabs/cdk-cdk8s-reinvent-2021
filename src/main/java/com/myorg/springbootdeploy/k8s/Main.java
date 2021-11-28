@@ -8,7 +8,7 @@ public class Main {
 
         App app = new App();
 
-        new Manifest(app,"SpringBoot", "public.ecr.aws/g5q9k7j5/springboot-example");
+        new Manifest(app,"SpringBoot", "286171437199.dkr.ecr.us-east-1.amazonaws.com/springboot-example");
 
         app.synth();
     }
