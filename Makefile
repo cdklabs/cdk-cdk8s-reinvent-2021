@@ -1,4 +1,4 @@
-.PHONY: install run jar manifest image container kill
+.PHONY: install run jar stack deploy destroy manifest image container kill
 
 install:
 	mvn clean install
