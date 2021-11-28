@@ -3,8 +3,8 @@ package com.myorg.springbootdeploy.aws;
 import com.myorg.springbootdeploy.k8s.Manifest;
 import org.cdk8s.App;
 import org.jetbrains.annotations.NotNull;
-//import software.amazon.awscdk.core.CfnOutput;
-//import software.amazon.awscdk.core.CfnOutputProps;
+import software.amazon.awscdk.core.CfnOutput;
+import software.amazon.awscdk.core.CfnOutputProps;
 import software.amazon.awscdk.services.ecr.assets.DockerImageAsset;
 import software.amazon.awscdk.services.ecr.assets.DockerImageAssetProps;
 import software.amazon.awscdk.services.eks.*;
@@ -39,11 +39,11 @@ public class Stack extends software.amazon.awscdk.core.Stack {
                 .ingressAlbScheme(AlbScheme.INTERNET_FACING)
                 .build());
 
-//        String lbAddress = cluster.getIngressLoadBalancerAddress(manifest.getIngress().getName());
-//
-//        new CfnOutput(this, "LBAddressValue", CfnOutputProps.builder()
-//                .value(lbAddress + "/greeting")
-//                .build());
+        String lbAddress = cluster.getIngressLoadBalancerAddress(manifest.getIngress().getName());
+
+        new CfnOutput(this, "LBAddressValue", CfnOutputProps.builder()
+                .value(lbAddress + "/greeting")
+                .build());
 
     }
 
