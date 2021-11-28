@@ -13,7 +13,7 @@ jar:
 stack:
 	cdk synth
 
-deploy:
+deploy: jar
 	cdk deploy
 
 destroy:
